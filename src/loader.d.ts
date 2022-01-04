@@ -242,6 +242,10 @@ declare namespace AMDLoader {
          */
         cspNonce?: string;
         /**
+         * Crossorigin attribute value used to load child scripts.
+         */
+        crossorigin?: 'anonymous' | 'use-credentials' | '';
+        /**
          * If running inside an electron renderer, prefer using <script> tags to load code.
          * Defaults to false.
          */
@@ -295,6 +299,7 @@ declare namespace AMDLoader {
         ignoreDuplicateModules: string[];
         isBuild: boolean;
         cspNonce: string;
+        crossorigin: 'anonymous' | 'use-credentials' | '' | undefined;
         preferScriptTags: boolean;
         nodeModules: string[];
     }

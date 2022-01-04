@@ -159,6 +159,12 @@ namespace AMDLoader {
 					script.setAttribute('nonce', cspNonce);
 				}
 
+				// Propagate crossorigin value to dynamically created script tag
+				const { crossorigin } = moduleManager.getConfig().getOptionsLiteral();
+				if (typeof crossorigin === 'string') {
+					script.setAttribute('crossorigin', crossorigin);
+				}
+
 				document.getElementsByTagName('head')[0].appendChild(script);
 			}
 		}

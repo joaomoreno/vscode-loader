@@ -320,6 +320,9 @@ var AMDLoader;
             if (typeof options.cspNonce !== 'string') {
                 options.cspNonce = '';
             }
+            if (typeof options.crossorigin !== 'string') {
+                options.crossorigin = undefined;
+            }
             if (typeof options.preferScriptTags === 'undefined') {
                 options.preferScriptTags = false;
             }
@@ -689,6 +692,11 @@ var AMDLoader;
                 var cspNonce = moduleManager.getConfig().getOptionsLiteral().cspNonce;
                 if (cspNonce) {
                     script.setAttribute('nonce', cspNonce);
+                }
+                // Propagate crossorigin value to dynamically created script tag
+                var crossorigin = moduleManager.getConfig().getOptionsLiteral().crossorigin;
+                if (typeof crossorigin === 'string') {
+                    script.setAttribute('crossorigin', crossorigin);
                 }
                 document.getElementsByTagName('head')[0].appendChild(script);
             }
